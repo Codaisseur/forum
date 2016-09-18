@@ -17,3 +17,4 @@
 .byebug_history
 .powder
 public/uploads
+.ruby-version

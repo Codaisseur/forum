@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
     resources :profiles
     resources :courses
+    resources :mentors
 
     get "questions/:id" => "questions#show"
 
