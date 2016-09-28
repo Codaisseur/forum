@@ -1,4 +1,5 @@
 class MentorsController < ApplicationController
+  load_and_authorize_resource
 
   def index
     @mentors = Mentor.all
@@ -15,12 +16,9 @@ class MentorsController < ApplicationController
   end
 
   def edit
-    @mentor = Mentor.find(params[:id])
   end
 
   def update
-    @mentor = Mentor.find(params[:id])
-
     if @mentor.update_attributes(mentor_params)
       redirect_to mentors_path
     else
@@ -29,7 +27,6 @@ class MentorsController < ApplicationController
   end
 
   def destroy
-    @mentor = Mentor.find(params[:id])
     authorize! :destroy, @mentor
     @mentor.destroy
     flash.notice = "'#{@mentor.name}' Deleted!"
