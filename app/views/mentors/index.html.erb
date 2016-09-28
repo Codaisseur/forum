@@ -1,0 +1,33 @@
+<h3 class= "margin-top-md">Mentoring Sessions</h3>
+<p>Below you will find the teachers and the specific times they are available for
+  one-on-one mentoring. Mentoring and coaching sessions are not just for those who
+  need help with their code, it's also for those in the job search phase. So regardless
+  of the issue, if you need some dedicated one-on-one time, be sure to reserve a
+  session to make certain that you get the attention you need.
+</p>
+
+  <% @mentors.each do |mentor| %>
+    <div class="col-sm-5 col-md-5 col-lg-3 col-wrapper-mentor">
+      <div class="something">
+        <div class="mentor-avatar"><%= image_tag mentor.avatar.url(:small), class: 'img-circle' %></div>
+        <h3 class="mentor-name"><%= mentor.name %></h3>
+        <table class="table">
+          <tr>
+            <td>Time</td>
+            <td><%= mentor.start_time.strftime("%H:%M") %> - <%= mentor.end_time.strftime("%H:%M") %></td>
+          </tr>
+          <tr>
+            <td>Availability</td>
+            <td><%= mentor.availability %></td>
+          </tr>
+          <tr>
+            <td>Specialities</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="2"><%= link_to "Book mentoring", mentor.calendly_url, target: '_blank', class: "btn btn-codaisseur pull-right" %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  <% end %>

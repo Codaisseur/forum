@@ -165,7 +165,7 @@ mentor1 = Mentor.create!(
   end_time: Time.now + 3.hours,
   availability: "Monday & Thursday",
   calendly_url: "https://calendly.com/miriamtocino/mentoring",
-  avatar: "http://vignette3.wikia.nocookie.net/thebiglebowski/images/7/7e/The_Dude.jpeg/revision/latest?cb=20111216183045"
+  remote_avatar_url: "http://vignette3.wikia.nocookie.net/thebiglebowski/images/7/7e/The_Dude.jpeg/revision/latest?cb=20111216183045"
 )
 
 mentor2 = Mentor.create!(
@@ -174,7 +174,7 @@ mentor2 = Mentor.create!(
   end_time: Time.now + 4.hours,
   availability: "Tuesdays & Fridays",
   calendly_url: "https://calendly.com/wrdevos/mentoring",
-  avatar: "http://2.bp.blogspot.com/-s3Ku5PXzGzQ/TiNukYIYuRI/AAAAAAAAALI/TsqaU4dVu4M/s1600/BigLebowski_131Pyxurz.jpg"
+  remote_avatar_url: "http://2.bp.blogspot.com/-s3Ku5PXzGzQ/TiNukYIYuRI/AAAAAAAAALI/TsqaU4dVu4M/s1600/BigLebowski_131Pyxurz.jpg"
 )
 
 mentor3 = Mentor.create!(
@@ -183,6 +183,6 @@ mentor3 = Mentor.create!(
   end_time: Time.now + 6.hours,
   availability: "Wednesdays",
   calendly_url: "https://calendly.com/matlap/30min",
-  avatar: "http://vignette4.wikia.nocookie.net/p__/images/0/03/DonnyKerabatsos.jpg/revision/latest?cb=20160119030354&path-prefix=protagonist"
+  remote_avatar_url: "http://vignette4.wikia.nocookie.net/p__/images/0/03/DonnyKerabatsos.jpg/revision/latest?cb=20160119030354&path-prefix=protagonist"
 )
 end

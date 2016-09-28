@@ -1,3 +1,43 @@
 // Place all the styles related to the mentors controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.col-wrapper-mentor {
+  background-color: #fff;
+  padding: 5%;
+  height: 510px;
+  margin: 45px;
+  text-align: center;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.40);
+  -moz-box-shadow:    0px 2px 5px 0px rgba(50, 50, 50, 0.40);
+  box-shadow:         0px 2px 5px 0px rgba(50, 50, 50, 0.40);
+}
+
+.mentor-avatar {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.mentor-avatar img {
+  height: 150px;
+}
+
+.mentor-name {
+  margin-top: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #F0002F;
+}
+
+@media only screen and (max-width : 1200px) {
+  .col-wrapper-mentor {
+    margin: 35px;
+  }
+}
+
+@media only screen and (max-width : 992px) {
+  .col-wrapper-mentor {
+    margin: 30px;
+  }
+}
