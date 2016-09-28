@@ -2,6 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
+.mentoring-controls {
+  margin-top: 40px;
+  padding-left: 15px;
+  padding-right: 35px;
+}
+
+.mentoring-header {
+  font-size: 1.70em;
+  margin-top: 0.2em;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+}
+
 .col-wrapper-mentor {
   background-color: #fff;
   padding: 5%;
