@@ -11,10 +11,12 @@ class Ability
       can :manage, Question, user: user
       can :manage, Answer, user: user
       can [:create, :edit], Profile, user: user
+      can [:index], Mentor, user: user
     elsif user.is_student?
       can :manage, Question, user: user
       can :manage, Answer, user: user
       can [:create, :edit], Profile, user: user
+      can [:index], Mentor, user: user
     end
   end
 end

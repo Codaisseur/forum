@@ -10,10 +10,11 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/">Forum</a></li>
+        <li><a href="/">Forum</a></li>
+        <li><%= link_to "Mentoring", mentors_path %></li>
         <li><a href="https://read.codaisseur.com/" target="_blank">Reader</a></li>
         <li><a href="https://www.codaisseur.com/blog" target="_blank">Blog</a></li>
-        <li><a href="https://www.codaisseur.com/contact" target="_blank">Support</a></li>
+        <li><a href="https://www.codaisseur.com/contact" target="_blank">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if !user_signed_in? %>

@@ -1,0 +1,42 @@
+<%= form_for @mentor do |f| %>
+
+<table class="table table-wrapper">
+  <tbody>
+    <tr>
+      <td><%= f.label :name %></td>
+      <td><%= f.text_field :name, required: true %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :start_time %></td>
+      <td><%= f.time_select :start_time, required: true %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :end_time %></td>
+      <td><%= f.time_select :end_time, required: true %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :availability %></td>
+      <td><%= f.text_field :availability, required: true %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :calendly_url %></td>
+      <td><%= f.url_field :calendly_url, required: true %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :competencies %></td>
+      <td><%= f.text_field :competencies, required: true %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :avatar %></td>
+      <td><%= f.file_field :avatar %></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="actions btn-submit-wrapper">
+                <%= link_to "Cancel", mentors_path, class: "btn btn-default" %>
+        <%= f.submit (@mentor.new_record? ? "Create" : "Update"), class: "btn btn-codaisseur" %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<% end %>

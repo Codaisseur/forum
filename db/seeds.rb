@@ -32,6 +32,7 @@ else
   User.delete_all
   Course.delete_all
   Topic.delete_all
+  Mentor.delete_all
 
   javascript          = Topic.create!( title: "Javascript" )
   java                = Topic.create!( title: "Java" )
@@ -157,4 +158,34 @@ else
       body: "Occupy ugh gochujang, swag hammock gentrify cardigan jean shorts meggings food truck synth biodiesel pork belly DIY four dollar toast.", user: miriam, question: question3
     }
   ])
+
+mentor1 = Mentor.create!(
+  name: "The Dude",
+  start_time: Time.now + 2.hours,
+  end_time: Time.now + 3.hours,
+  availability: "Monday & Thursday",
+  competencies: "RoR, career advice, elearning advice",
+  calendly_url: "https://calendly.com/miriamtocino/mentoring",
+  remote_avatar_url: "http://vignette3.wikia.nocookie.net/thebiglebowski/images/7/7e/The_Dude.jpeg/revision/latest?cb=20111216183045"
+)
+
+mentor2 = Mentor.create!(
+  name: "Walter Sobchak",
+  start_time: Time.now + 3.hours,
+  end_time: Time.now + 4.hours,
+  availability: "Tuesdays & Fridays",
+  competencies: "Full Package",
+  calendly_url: "https://calendly.com/wrdevos/mentoring",
+  remote_avatar_url: "http://2.bp.blogspot.com/-s3Ku5PXzGzQ/TiNukYIYuRI/AAAAAAAAALI/TsqaU4dVu4M/s1600/BigLebowski_131Pyxurz.jpg"
+)
+
+mentor3 = Mentor.create!(
+  name: "Donny Kerabatsos",
+  start_time: Time.now + 5.hours,
+  end_time: Time.now + 6.hours,
+  availability: "Wednesdays",
+  competencies: "Javascript, RoR",
+  calendly_url: "https://calendly.com/matlap/30min",
+  remote_avatar_url: "http://vignette4.wikia.nocookie.net/p__/images/0/03/DonnyKerabatsos.jpg/revision/latest?cb=20160119030354&path-prefix=protagonist"
+)
 end
