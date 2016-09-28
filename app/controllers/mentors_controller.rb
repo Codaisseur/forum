@@ -2,7 +2,7 @@ class MentorsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @mentors = Mentor.all
+    @mentors = Mentor.all.decorate
   end
 
   def new

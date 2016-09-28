@@ -10,4 +10,8 @@ class MentorDecorator < Draper::Decorator
   #     end
   #   end
 
+  def mentoring_times
+    "#{object.start_time.strftime("%H:%M")} - #{object.end_time.strftime("%H:%M")}"
+  end
+
 end
