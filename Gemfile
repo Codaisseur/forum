@@ -78,4 +78,4 @@ gem 'will_paginate-bootstrap'
 gem 'appsignal'
 
 gem 'activemodel-serializers-xml'
-gem 'draper'
+gem 'draper', github: 'audionerd/draper', branch: 'rails5'
