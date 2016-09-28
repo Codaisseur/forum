@@ -76,3 +76,6 @@ gem 'coderay'
 gem 'will_paginate-bootstrap'
 
 gem 'appsignal'
+
+gem 'activemodel-serializers-xml'
+gem 'draper'
