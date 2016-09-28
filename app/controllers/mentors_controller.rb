@@ -14,6 +14,28 @@ class MentorsController < ApplicationController
     redirect_to mentors_path
   end
 
+  def edit
+    @mentor = Mentor.find(params[:id])
+  end
+
+  def update
+    @mentor = Mentor.find(params[:id])
+
+    if @mentor.update_attributes(mentor_params)
+      redirect_to mentors_path
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @mentor = Mentor.find(params[:id])
+    authorize! :destroy, @mentor
+    @mentor.destroy
+    flash.notice = "'#{@mentor.name}' Deleted!"
+    redirect_to mentors_path
+  end
+
   private
 
   def mentor_params

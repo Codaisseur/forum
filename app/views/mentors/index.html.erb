@@ -2,9 +2,11 @@
     <div class="input-group pull-left mentoring-header">
       Mentoring Sessions
     </div>
-    <div class="input-group pull-right">
-      <%= link_to 'Add mentor', new_mentor_path, class: 'btn btn-codaisseur', style: 'margin-bottom: 20px;' %>
-    </div>
+    <% if current_user.is_admin? %>
+      <div class="input-group pull-right">
+        <%= link_to 'Add mentor', new_mentor_path, class: 'btn btn-codaisseur', style: 'margin-bottom: 20px;' %>
+      </div>
+    <% end %>
   </div>
 
 <p>Below you will find the teachers and the specific times they are available for
@@ -28,12 +30,16 @@
         <td><%= mentor.availability %></td>
       </tr>
       <tr>
-        <td class="mentor-category">Specialities</td>
+        <td class="mentor-category">Competencies</td>
         <td><%= mentor.competencies %></td>
       </tr>
       <tr>
         <td colspan="2"><%= link_to "Book mentoring", mentor.calendly_url, target: '_blank', class: "btn btn-codaisseur pull-right" %></td>
       </tr>
     </table>
+    <% if current_user.is_admin? %>
+      <%= link_to "", { action: :destroy, id: mentor.id }, method: :delete, data: { confirm: 'Are you sure?' }, class: "glyphicon glyphicon-trash" %>
+      <%= link_to "", edit_mentor_path(mentor.id), class: "glyphicon glyphicon-wrench"  %>
+    <% end %>
   </div>
 <% end %>

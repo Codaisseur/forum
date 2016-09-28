@@ -28,11 +28,12 @@
     </tr>
     <tr>
       <td><%= f.label :avatar %></td>
-      <td><%= f.file_field :avatar, required: true %></td>
+      <td><%= f.file_field :avatar %></td>
     </tr>
     <tr>
       <td colspan="2" class="actions btn-submit-wrapper">
-        <%= f.submit "Create", class: "btn btn-codaisseur" %>
+                <%= link_to "Cancel", mentors_path, class: "btn btn-default" %>
+        <%= f.submit (@mentor.new_record? ? "Create" : "Update"), class: "btn btn-codaisseur" %>
       </td>
     </tr>
   </tbody>
