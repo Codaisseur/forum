@@ -1,12 +1,13 @@
 class QuestionMailer < ApplicationMailer
 
   def answer_mail(question)
+    debugger
     # Get question data
     @question      = question
 
-    @asker         = question.user
+    @asker         = @question.user
     @asker_name    = !@asker.profile.nil? ? @asker.profile.first_name : @asker.email
-    @answerer      = question.answers.last.user
+    @answerer      = @question.answers.last.user
     @answerer_name = !@answerer.profile.nil? ? @answerer.profile.first_name : @answerer.email
 
     # TODO filter duplicate answerers
