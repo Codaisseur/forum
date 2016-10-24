@@ -1,0 +1,9 @@
+Hi <%= @asker_name %>
+
+Your question on the Codaisseur Forum got a new reply from <%= @answerer_name %>. Please visit the forum to check it out.
+
+<%= link_to(@question.title, question_url(@question)) %>
+
+Cheers,
+
+The Codaisseur Team
