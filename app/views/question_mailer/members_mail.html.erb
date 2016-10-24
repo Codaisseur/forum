@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    </head>
+    <body>
+        Hi <%= @receiver_name %>
+
+        A topic you contributed to on Codaisseur Forum got a new reply from <%= @answerer_name %>. Please visit the forum to check it out.
+
+        <%= link_to(@question.title, question_url(@question)) %>
+
+        Cheers,
+
+        The Codaisseur Team
+
+    </body>
+</html>
+
