@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   has_one :profile
   has_many :votes
+  has_one :notification_setting, dependent: :destroy
 
   def active_for_authentication?
     super && approved?

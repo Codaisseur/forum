@@ -36,7 +36,13 @@
           <td>Website URL</td>
           <td><%= link_to @profile.website, @profile.website, class: 'codaisseur-link', target: '_blank' if !@profile.website.nil? %></td>
         </tr>
+        <td>Receive notification when someone replies to your question</td>
+        <td><%= @profile.asker_gets_replies %></td>
         <tr>
+        <tr>
+          <td>Receive notifications of topics you are contributing to</td>
+          <td><%= @profile.member_gets_replies %></td>
+        </tr>
           <td colspan="2">
             <%= link_to 'Edit profile', edit_profile_path(current_user.profile), class: "btn btn-codaisseur pull-right" %>
           </td>

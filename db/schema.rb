@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928122722) do
+ActiveRecord::Schema.define(version: 20161025131231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,17 @@ ActiveRecord::Schema.define(version: 20160928122722) do
     t.string   "competencies"
   end
 
+  create_table "notification_settings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.boolean  "asker_sees_replies"
+    t.boolean  "member_sees_replies"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "profile_id"
+    t.index ["profile_id"], name: "index_notification_settings_on_profile_id", using: :btree
+    t.index ["user_id"], name: "index_notification_settings_on_user_id", using: :btree
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -55,9 +66,11 @@ ActiveRecord::Schema.define(version: 20160928122722) do
     t.string   "twitter"
     t.string   "website"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "course_id"
+    t.boolean  "asker_gets_replies"
+    t.boolean  "member_gets_replies"
     t.index ["course_id"], name: "index_profiles_on_course_id", using: :btree
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
@@ -115,6 +128,8 @@ ActiveRecord::Schema.define(version: 20160928122722) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
+  add_foreign_key "notification_settings", "profiles"
+  add_foreign_key "notification_settings", "users"
   add_foreign_key "profiles", "courses"
   add_foreign_key "profiles", "users"
   add_foreign_key "questions", "topics"

@@ -58,7 +58,7 @@ class ProfilesController < ApplicationController
   def edit
     @profile = Profile.find(params[:id])
     @user = @profile.user
-    authorize! :edit, @profile
+    authorize! :edit, @profile, @notification
   end
 
   def update
@@ -94,7 +94,7 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:avatar, :first_name, :last_name, :course_id, :bio, :github, :twitter, :website).tap do |person_params|
+    params.require(:profile).permit(:avatar, :first_name, :last_name, :course_id, :bio, :github, :twitter, :website, :asker_gets_replies, :member_gets_replies).tap do |person_params|
       person_params.require([:first_name, :last_name])
     end
   end

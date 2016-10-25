@@ -51,7 +51,16 @@
               <td><%= f.text_field :website, class: "form-control" %></td>
             </tr>
             <tr>
-              <td colspan="2" class="actions btn-submit-wrapper">
+              <td><label> Notification settings </label></td>
+            </tr>
+            <tr>
+              <td><%= f.check_box :asker_gets_replies %>  Receive notification when someone replies to your question</td>
+            </tr>
+            <tr>
+              <td><%= f.check_box :member_gets_replies %>  Receive notifications of topics you are contributing to</td>
+            </tr>
+            <tr>
+            <td colspan="2" class="actions btn-submit-wrapper">
                <%= link_to "Cancel", @profile, class: "btn btn-default" %>
                 <%= f.submit (@profile.new_record? ? "Create" : "Update"), class: "btn btn-codaisseur" %>
               </td>
@@ -59,6 +68,7 @@
           </tbody>
         </table>
  <% end %>
+
         </div>
     </div>
 </div>
