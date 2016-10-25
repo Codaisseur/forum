@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe QuestionMailer, type: :mailer do
-  let!(:asker) { create :user }
+
+  let!(:asker) { create :user, email: "asker@email.com" }
   let!(:topic) { create :topic }
   let!(:question) { create :question, user: asker, topic: topic}
 
@@ -11,7 +12,11 @@ RSpec.describe QuestionMailer, type: :mailer do
 
     it "Should not send an email to the asker" do
       email = QuestionMailer.asker_mail(question)
-      expect(email.to).not_to match [asker.email]
+      expect(email.to).to be_nil
+    end
+    it "Should not have any members" do
+      email = QuestionMailer.members_mail(question)
+      expect(email.to).to match_array []
     end
   end
 
@@ -23,19 +28,30 @@ RSpec.describe QuestionMailer, type: :mailer do
       email = QuestionMailer.asker_mail(question)
       expect(email.to).to match [asker.email]
     end
+    it "Should not send an email to the answerer" do
+      email = QuestionMailer.members_mail(question)
+      expect(email.to).to match []
+    end
   end
 
-  describe "Asker replies to one answer of another user" do
+  describe "Another user replies to a thread with multiple answers" do
     let!(:answerer1) { create :user }
+    let!(:answerer2) { create :user }
+    let!(:answerer3) { create :user }
 
     let!(:answer1) { create :answer, user: answerer1, question: question }
-    let!(:answer2) { create :answer, user: asker, question: question }
+    let!(:answer3) { create :answer, user: answerer2, question: question }
+    let!(:answer4) { create :answer, user: answerer2, question: question }
+    let!(:answer6) { create :answer, user: asker, question: question }
+    let!(:answer5) { create :answer, user: answerer3, question: question }
 
-    it "Should an email to the answerer" do
-      # NOTE: Because we are looping in the QuestionMailer.member_mail,
-      # NOTE: the array 'email.to' will always contain one item.
+    it "Should send an email to the asker" do
+      email = QuestionMailer.asker_mail(question)
+      expect(email.to).to match [asker.email]
+    end
+    it "Should send one email to each unique answerer except the last" do
       email = QuestionMailer.members_mail(question)
-      expect(email.to).to match [answerer1.email]
+      expect(email.to).to contain_exactly(answerer1.email, answerer2.email)
     end
   end
 

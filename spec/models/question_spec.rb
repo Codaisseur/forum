@@ -16,7 +16,7 @@ RSpec.describe Question, type: :model do
     let!(:answer3) { create :answer, user: answerer2, question: question }
 
     it "should be unique" do
-      expect(question.members).to match [answerer1, answerer2]
+      expect(question.members).to contain_exactly( answerer1, answerer2 )
     end
   end
 end

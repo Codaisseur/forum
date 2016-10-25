@@ -4,15 +4,15 @@
         <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
     </head>
     <body>
-        Hi <%= @asker_name %>
+    <p>Hi <%= @asker_name %></p>
 
-        Your question on the Codaisseur Forum got a new reply from <%= @answerer_name %>. Please visit the forum to check it out.
+    <p>Your question on the Codaisseur Forum got a new reply from <%= @answerer_name %>. Please visit the forum to check it out.</p>
 
-        <%= link_to(@question.title, question_url(@question)) %>
+    <p>Question: <%= link_to(@question.title, question_url(@question)) %></p>
 
-        Cheers,
-
-        The Codaisseur Team
+    <p>Cheers,</p>
+    </br>
+    <p>The Codaisseur Team</p>
 
     </body>
 </html>
