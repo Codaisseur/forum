@@ -4,6 +4,7 @@ class Question < ApplicationRecord
 
   belongs_to :user
   has_many :answers
+  has_many :members, through: :answers, source: :user
   belongs_to :topic
 
   validates_presence_of :title, :body, :topic_id
