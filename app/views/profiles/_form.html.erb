@@ -51,14 +51,13 @@
               <td><%= f.text_field :website, class: "form-control" %></td>
             </tr>
             <tr>
-              <label> Notification settings </label>
-              <hr/>
-            <tr>
-              <td>
-              <td><%= f.check_box :asker_gets_replies %>Receive notification when someone replies to your question</td>
+              <td><label> Notification settings </label></td>
             </tr>
             <tr>
-              <td><%= f.check_box :member_gets_replies %>Receive notifications of topics you are contributing to</td>
+              <td><%= f.check_box :asker_gets_replies %>  Receive notification when someone replies to your question</td>
+            </tr>
+            <tr>
+              <td><%= f.check_box :member_gets_replies %>  Receive notifications of topics you are contributing to</td>
             </tr>
             <tr>
             <td colspan="2" class="actions btn-submit-wrapper">
