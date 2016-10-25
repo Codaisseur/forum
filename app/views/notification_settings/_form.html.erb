@@ -1,0 +1,16 @@
+
+      <%= form_for @profile do |f| %>
+          <table class="table table-profile">
+            <tbody>
+
+              <td colspan="2" class="actions btn-submit-wrapper">
+                <%= link_to "Cancel", @profile, class: "btn btn-default" %>
+                <%= f.submit (@profile.new_record? ? "Create" : "Update"), class: "btn btn-codaisseur" %>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+      <% end %>
+    </div>
+  </div>
+

@@ -26,6 +26,7 @@ if Rails.env.production?
   traineeship4 = Course.create!( name: "Traineeship 4", starting_at: Date.new(2016,8), ending_at: Date.new(2016,9) )
   traineeship5 = Course.create!( name: "Traineeship 5", starting_at: Date.new(2016,10), ending_at: Date.new(2016,11) )
 else
+  NotificationSetting.delete_all
   Answer.delete_all
   Question.delete_all
   Profile.delete_all
@@ -33,6 +34,7 @@ else
   Course.delete_all
   Topic.delete_all
   Mentor.delete_all
+
 
   javascript          = Topic.create!( title: "Javascript" )
   java                = Topic.create!( title: "Java" )
@@ -136,6 +138,9 @@ else
     website: "https://www.developmentbootcamp.nl/t",
     user: admin
   )
+
+  notification_setting1 = NotificationSetting.create(asker_sees_replies: true, member_sees_replies: true, user: miriam, profile: pr_miriam)
+
 
   question1 = Question.create!( title: "How to implement Devise into your ruby app?", body: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google", user: matthijs, topic: ruby)
   question2 = Question.create!( title: "How to implement Devise into your rails app?", body: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google", user: matthijs, topic: rails )
