@@ -24,16 +24,8 @@ class QuestionMailer < ApplicationMailer
     answerer       = @question.answers.last.user
     @answerer_name = !answerer.profile.nil? ? answerer.profile.first_name : answerer.email
 
-    # TODO Make an in between table for this!!!
-    # TODO Something like topic_member through user
-    # Filter duplicate answerers
-    other_members = []
-    question.answers.each do |answer|
-      other_members << answer.user unless other_members.include? answer.user
-    end
-
     # And send mail to each unique topic member
-    other_members.each do |member|
+    question.members.each do |member|
       # Only send to other members not to latest answerer
       unless answerer == member
         @receiver_name = !member.profile.nil? ? member.profile.first_name : member.email
