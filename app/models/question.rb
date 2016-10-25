@@ -4,7 +4,9 @@ class Question < ApplicationRecord
 
   belongs_to :user
   has_many :answers
-  has_many :members, through: :answers, source: :user
+  # We want members to be unique so we can email them easily
+  # We do this by doing '-> {distinct}'... Awesome!
+  has_many :members, -> {distinct}, through: :answers, source: :user
   belongs_to :topic
 
   validates_presence_of :title, :body, :topic_id
