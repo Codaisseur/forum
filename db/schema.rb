@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025131231) do
+ActiveRecord::Schema.define(version: 20161026082038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,12 +48,12 @@ ActiveRecord::Schema.define(version: 20161025131231) do
 
   create_table "notification_settings", force: :cascade do |t|
     t.integer  "user_id"
-    t.boolean  "asker_sees_replies"
-    t.boolean  "member_sees_replies"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.integer  "profile_id"
-    t.index ["profile_id"], name: "index_notification_settings_on_profile_id", using: :btree
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "notifiable_type"
+    t.integer  "notifiable_id"
+    t.boolean  "send_emails",     default: true
+    t.index ["notifiable_type", "notifiable_id"], name: "idx_notification_settings_on_notifiable_type_and_id", using: :btree
     t.index ["user_id"], name: "index_notification_settings_on_user_id", using: :btree
   end
 
@@ -128,7 +128,6 @@ ActiveRecord::Schema.define(version: 20161025131231) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
-  add_foreign_key "notification_settings", "profiles"
   add_foreign_key "notification_settings", "users"
   add_foreign_key "profiles", "courses"
   add_foreign_key "profiles", "users"
