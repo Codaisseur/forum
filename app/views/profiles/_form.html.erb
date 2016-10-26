@@ -51,13 +51,10 @@
               <td><%= f.text_field :website, class: "form-control" %></td>
             </tr>
             <tr>
-              <td><label> Notification settings </label></td>
-            </tr>
-            <tr>
-              <td><%= f.check_box :asker_gets_replies %>  Receive notification when someone replies to your question</td>
-            </tr>
-            <tr>
-              <td><%= f.check_box :member_gets_replies %>  Receive notifications of topics you are contributing to</td>
+              <%= f.fields_for(:notification_setting) do |n| %>
+                  <td><%= n.label 'Receive email notifications' %></td>
+                  <td><%= n.check_box :send_emails %></td>
+              <% end %>
             </tr>
             <tr>
             <td colspan="2" class="actions btn-submit-wrapper">

@@ -15,9 +15,7 @@ Rails.application.routes.draw do
       resources :votes, only: [:create, :destroy], controller: 'votes'
     end
 
-    resources :profiles do
-      resources :notification_settings, only: [:create, :update]
-    end
+    resources :profiles
     resources :courses
     resources :mentors
 
