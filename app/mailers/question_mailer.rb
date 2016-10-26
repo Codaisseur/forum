@@ -35,6 +35,7 @@ class QuestionMailer < ApplicationMailer
         member_emails << member.email
       end
     end
+    return if member_emails.empty?
     mail(to: member_emails, subject: "New reply for: #{@question.title}") do |format|
       format.html { render file: 'question_mailer/members_mail' }
       format.text { render file: 'question_mailer/members_mail' }
