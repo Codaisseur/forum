@@ -7,6 +7,7 @@ class Question < ApplicationRecord
   # We want members to be unique so we can email them easily
   # We do this by doing '-> {distinct}'... Awesome!
   has_many :members, -> {distinct}, through: :answers, source: :user
+  has_many :notification_preferences, as: :notifiable
   belongs_to :topic
 
   validates_presence_of :title, :body, :topic_id
