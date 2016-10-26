@@ -34,7 +34,6 @@ else
   Topic.delete_all
   Mentor.delete_all
 
-
   javascript          = Topic.create!( title: "Javascript" )
   java                = Topic.create!( title: "Java" )
   php                 = Topic.create!( title: "PHP" )

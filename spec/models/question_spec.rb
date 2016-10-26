@@ -1,13 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Question, type: :model do
-
   let!(:asker) { create :user }
   let!(:topic) { create :topic }
   let!(:question) { create :question, user: asker, topic: topic}
 
   describe "members" do
-
     let!(:answerer1) { create :user }
     let!(:answerer2) { create :user }
 
