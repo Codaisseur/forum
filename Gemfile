@@ -68,6 +68,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem "fog", require: "fog/aws/storage"
 
+gem 'slack-notifier'
+
 gem "devise"
 
 gem "will_paginate"
