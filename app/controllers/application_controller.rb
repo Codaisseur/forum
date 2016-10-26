@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
   def slack_notification_reply question
     @slack_notifier.ping(
-      "<!channel> #{name} commented on #{title} in the Forum!\r\n
+      "<!channel> #{question.members.last.profile.first_name} commented on #{question.title} in the Forum!\r\n
       Check out the question to see if you can help! :heart:\r\n
       #{question_url(question)}"
     )
