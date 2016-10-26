@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe QuestionMailer, type: :mailer do
-
   let!(:asker) { create :user, email: "asker@email.com" }
   let!(:topic) { create :topic }
   let!(:question) { create :question, user: asker, topic: topic}
@@ -48,10 +47,6 @@ RSpec.describe QuestionMailer, type: :mailer do
     it "Should send an email to the asker" do
       email = QuestionMailer.asker_mail(question)
       expect(email.to).to match [asker.email]
-    end
-    it "Should send one email to each unique answerer except the last" do
-      email = QuestionMailer.members_mail(question)
-      expect(email.to).to contain_exactly(answerer1.email, answerer2.email)
     end
   end
 

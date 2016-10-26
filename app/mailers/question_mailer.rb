@@ -28,17 +28,16 @@ class QuestionMailer < ApplicationMailer
     answerer       = @question.answers.last.user
     @answerer_name = !answerer.profile.nil? ? answerer.profile.first_name : answerer.email
 
-    # Get array of member emails
-    member_emails = []
+    # Send an email to each topic member
     question.members.each do |member|
-      if member.email != answerer.email && member != asker
-        member_emails << member.email
+      @receiver_name = !member.profile.nil? ? member.profile.first_name : member.email
+      # Do not send to asker or last answerer
+      unless member == asker || member == answerer
+        mail(to: member.email, subject: "New reply for: #{@question.title}") do |format|
+          format.html { render file: 'question_mailer/members_mail' }
+          format.text { render file: 'question_mailer/members_mail' }
+        end
       end
-    end
-    return if member_emails.empty?
-    mail(to: member_emails, subject: "New reply for: #{@question.title}") do |format|
-      format.html { render file: 'question_mailer/members_mail' }
-      format.text { render file: 'question_mailer/members_mail' }
     end
   end
 
