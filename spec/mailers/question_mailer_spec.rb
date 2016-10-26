@@ -16,7 +16,7 @@ RSpec.describe QuestionMailer, type: :mailer do
     end
     it "Should not have any members" do
       email = QuestionMailer.members_mail(question)
-      expect(email.to).to match_array []
+      expect(email.to).to be_nil
     end
   end
 
@@ -30,7 +30,7 @@ RSpec.describe QuestionMailer, type: :mailer do
     end
     it "Should not send an email to the answerer" do
       email = QuestionMailer.members_mail(question)
-      expect(email.to).to match []
+      expect(email.to).to be_nil
     end
   end
 
