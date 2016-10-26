@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   helper_method :sort_column, :sort_direction
+  helper QuestionsHelper
 
   def index
     if user_signed_in?
@@ -33,6 +34,7 @@ class QuestionsController < ApplicationController
     @question.user = current_user
     authorize! :create, @question
     if @question.save()
+      slack_notification_new(@question)
       redirect_to @question
     else
       render :new
