@@ -12,19 +12,34 @@ class SlackService
   end
 
   def slack_notification_new question
-    @slack_notifier.ping(
-      "<!channel> #{question.user.profile.first_name} posted a new question in the Forum!\r\n
-      #{question.title}\r\n
-      Check out the question to see if you can help! :heart:\r\n
-      #{question_url(only_path: false, host: @hostname, id: question.id)}"
-    )
+    question_url = "#{question_url(only_path: false, host: @hostname, id: question.id)}"
+    ping = {
+      "fallback": question_url,
+      "title_link": question_url,
+      "image_url": "",
+      "thumb_url": "",
+      "pretext": "<!channel> #{question.user.profile.first_name} posted a new question!",
+      "title": "#{question.title.capitalize}",
+      "text": "Check out the question to see if you can help! :heart:",
+      "footer": "Codaisseur Forum",
+      "mrkdwn_in": ["text", "pretext"]
+    }
+    @slack_notifier.ping(attachments: [ping])
   end
 
   def slack_notification_reply question
-    @slack_notifier.ping(
-      "<!channel> #{question.members.last.profile.first_name} commented on #{question.title} in the Forum!\r\n
-      Check out the question to see if you can help! :heart:\r\n
-      #{question_url(only_path: false, host: @hostname, id: question.id)}"
-    )
+    question_url = "#{question_url(only_path: false, host: @hostname, id: question.id)}"
+    ping = {
+      "fallback": question_url,
+      "title_link": question_url,
+      "image_url": "",
+      "thumb_url": "",
+      "pretext": "<!channel> #{question.user.profile.first_name} commented on a question.",
+      "title": "#{question.title.capitalize}",
+      "text": "Check out the question to see if you can help! :heart:",
+      "footer": "Codaisseur Forum",
+      "mrkdwn_in": ["text", "pretext"]
+    }
+    @slack_notifier.ping(attachments: [ping])
   end
 end
