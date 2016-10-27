@@ -1,7 +1,7 @@
 require 'slack-notifier'
 
 class SlackService
-  delegate :url_helpers, to: 'Rails.application.routes'
+  include Rails.application.routes.url_helpers
 
   def initialize
     webhook  = ENV["SLACK_WEBHOOK"]
@@ -15,7 +15,7 @@ class SlackService
       "<!channel> #{question.user.profile.first_name} posted a new question in the Forum!\r\n
       #{question.title}\r\n
       Check out the question to see if you can help! :heart:\r\n
-      #{url_helpers.question_path(question)}"
+      #{question_path(question)}"
     )
   end
 
@@ -23,7 +23,7 @@ class SlackService
     @slack_notifier.ping(
       "<!channel> #{question.members.last.profile.first_name} commented on #{question.title} in the Forum!\r\n
       Check out the question to see if you can help! :heart:\r\n
-      #{url_helpers.question_path(question)}"
+      #{question_path(question)}"
     )
   end
 end
