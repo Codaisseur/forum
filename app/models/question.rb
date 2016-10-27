@@ -14,6 +14,12 @@ class Question < ApplicationRecord
 
   scope :topic, -> (topic_id) { where topic_id: topic_id }
 
+  after_create :create_notification_setting
+
+  def create_notification_setting
+    notification_settings.create
+  end
+
   def self.search(search)
     where("title ILIKE ? ", "%#{search}%")
   end
