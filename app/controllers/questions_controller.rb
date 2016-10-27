@@ -34,7 +34,7 @@ class QuestionsController < ApplicationController
     @question.user = current_user
     authorize! :create, @question
     if @question.save()
-      slack_notification_new(@question)
+      SlackService.new().slack_notification_new(@question)
       redirect_to @question
     else
       render :new
