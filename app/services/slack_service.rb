@@ -3,12 +3,12 @@ require 'slack-notifier'
 class SlackService
   include Rails.application.routes.url_helpers
 
-  def initialize(hostname)
+  def initialize(request)
     webhook  = ENV["SLACK_WEBHOOK"]
     channel  = '#testing_notifications'
     username = 'Forum Bot'
     @slack_notifier = Slack::Notifier.new webhook, channel: channel, username: username
-    @hostname = hostname
+    @hostname = request.host_with_port # NOTE Does this behave when in production?
   end
 
   def slack_notification_new question
