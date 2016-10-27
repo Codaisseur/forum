@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
       end
     end
 
-    @random = Question.includes(:answers).where( :answers => { :question_id => nil } ).sample(3)
+    @random = Question.includes(:answers).where( answers: { question_id: nil } ).sample(3)
 
     if params[:search]
       @questions = Question.search(params[:search]).order(created_at: :desc)
@@ -51,7 +51,6 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-
     @question = Question.find(params[:id])
 
     @question.destroy
