@@ -3,7 +3,7 @@ class Question < ApplicationRecord
   include IsVotable
 
   belongs_to :user
-  has_many :answers
+  has_many :answers, dependent: :destroy
   # We want members to be unique so we can email them easily
   # We do this by doing '-> {distinct}'... Awesome!
   has_many :members, -> {distinct}, through: :answers, source: :user
