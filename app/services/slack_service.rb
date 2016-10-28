@@ -4,10 +4,8 @@ class SlackService
   include Rails.application.routes.url_helpers
 
   def initialize(request)
-    webhook  = ENV["SLACK_WEBHOOK"]
-    channel  = '#testing_notifications'
-    username = 'Forum Bot'
-    @slack_notifier = Slack::Notifier.new webhook, channel: channel, username: username
+    @config = SlackConfig.first
+    @slack_notifier = Slack::Notifier.new @config.web_hook, channel: @config.channel, username: @config.user_name
     @hostname = request.host_with_port # NOTE Does this behave when in production?
   end
 
