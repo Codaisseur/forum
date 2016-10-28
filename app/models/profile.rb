@@ -17,6 +17,6 @@ class Profile <  ActiveRecord::Base
 
   def create_notification_setting
     return if notification_setting.present?
-    build_notification_setting.save
+    build_notification_setting
   end
 end
