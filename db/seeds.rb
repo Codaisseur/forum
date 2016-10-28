@@ -42,6 +42,14 @@ User.delete_all
   miriam = User.create!( email: "miriam@test.com", password: "abcd1234", role: "teacher", approved: true )
   admin = User.create!( email: "admin@test.com", password: "abcd1234", role: "admin", approved: true )
 
+  notification_setting1 = NotificationSetting.create!()
+  notification_setting2 = NotificationSetting.create!()
+  notification_setting3 = NotificationSetting.create!()
+  notification_setting4 = NotificationSetting.create!()
+  notification_setting5 = NotificationSetting.create!()
+  notification_setting6 = NotificationSetting.create!()
+  notification_setting7 = NotificationSetting.create!()
+
   pr_matthijs = Profile.create!(
     first_name: "Matthijs",
     last_name: "van den Berg",
@@ -50,7 +58,8 @@ User.delete_all
     github: "Ecthelion3",
     twitter: "ecthelion3",
     course: traineeship4,
-    user: matthijs
+    user: matthijs,
+    notification_setting: notification_setting1
   )
   pr_ruben = Profile.create!(
     first_name: "Ruben",
@@ -59,7 +68,8 @@ User.delete_all
     bio: "Ye show done an into. Fifteen winding related may hearted colonel are way studied.",
     github: "RubenSloote",
     course: traineeship4,
-    user: ruben
+    user: ruben,
+    notification_setting: notification_setting1
   )
   pr_nienke = Profile.create!(
     first_name: "Nienke",
@@ -68,7 +78,8 @@ User.delete_all
     bio: "County suffer twenty or marked no moment in he. Meet shew or said like he.",
     github: "nienkebos",
     course: traineeship4,
-    user: nienke
+    user: nienke,
+    notification_setting: notification_setting1
   )
   pr_juliang = Profile.create!(
     first_name: "Julian",
@@ -79,7 +90,8 @@ User.delete_all
     twitter: "Julianvdg",
     website: "http://webhippy.com/",
     course: traineeship4,
-    user: juliang
+    user: juliang,
+    notification_setting: notification_setting1
   )
   pr_julianh = Profile.create!(
     first_name: "Julian",
@@ -88,7 +100,8 @@ User.delete_all
     bio: "Lose john poor same it case do year we. Full how way even the sigh.",
     github: "ijscoman1337",
     course: traineeship4,
-    user: julianh
+    user: julianh,
+    notification_setting: notification_setting1
   )
   pr_miriam = Profile.create!(
     first_name: "Miriam",
@@ -97,7 +110,8 @@ User.delete_all
     bio: "Extremely nor furniture fat questions now provision incommode preserved. Our side fail find like now.",
     github: "miriamtocino",
     website: "http://miriamtocino.com/",
-    user: miriam
+    user: miriam,
+    notification_setting: notification_setting1
   )
   pr_admin = Profile.create!(
     first_name: "Wouter",
@@ -107,7 +121,8 @@ User.delete_all
     github: "foxycoder",
     twitter: "wrdevos",
     website: "https://www.developmentbootcamp.nl/t",
-    user: admin
+    user: admin,
+    notification_setting: notification_setting1
   )
 
   question1 = Question.create!( title: "How to implement Devise into your ruby app?", body: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google", user: matthijs, topic: ruby)
