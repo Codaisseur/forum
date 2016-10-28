@@ -41,13 +41,13 @@
           <td><%= @profile.notification_setting.send_emails ? "Yes" : "No" %></td>
         </tr>
         <tr>
-          <td>My questions:</td>
+          <td>My Contributions:</td>
           <td></td>
         </tr>
         <% current_user.questions.each do |question|%>
         <tr>
           <td></td>
-          <td>
+          <td> <%= image_tag 'codaisseur-icon.png', style: "width:25px;" %>
             <%= link_to question.title, question_path(question), class: 'codaisseur-link', target: '_blank'%>
           </td>
         </tr>
