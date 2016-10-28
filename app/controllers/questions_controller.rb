@@ -23,6 +23,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @currently_subscribed = @question.notification_settings.where(user: current_user).first.send_emails
   end
 
   def new

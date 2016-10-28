@@ -18,7 +18,12 @@ Rails.application.routes.draw do
       resources :votes, only: [:create, :destroy], controller: 'votes'
     end
 
-    resources :profiles
+    resources :profiles do
+      collection do
+        get 'reset_notifications'
+      end
+    end
+
     resources :courses
     resources :mentors
     resources :slack_configs
