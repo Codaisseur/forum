@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     end
 
     resources :questions do
+      collection do
+        get 'subscribe'
+      end
       resources :answers do
         resources :votes, only: [:create, :destroy], controller: 'votes'
       end
