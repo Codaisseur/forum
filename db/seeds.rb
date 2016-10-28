@@ -59,7 +59,7 @@ User.delete_all
     twitter: "ecthelion3",
     course: traineeship4,
     user: matthijs,
-    notification_setting: notification_setting1
+    notification_setting: notification_setting2
   )
   pr_ruben = Profile.create!(
     first_name: "Ruben",
@@ -69,7 +69,7 @@ User.delete_all
     github: "RubenSloote",
     course: traineeship4,
     user: ruben,
-    notification_setting: notification_setting1
+    notification_setting: notification_setting3
   )
   pr_nienke = Profile.create!(
     first_name: "Nienke",
@@ -79,7 +79,7 @@ User.delete_all
     github: "nienkebos",
     course: traineeship4,
     user: nienke,
-    notification_setting: notification_setting1
+    notification_setting: notification_setting4
   )
   pr_juliang = Profile.create!(
     first_name: "Julian",
@@ -91,7 +91,7 @@ User.delete_all
     website: "http://webhippy.com/",
     course: traineeship4,
     user: juliang,
-    notification_setting: notification_setting1
+    notification_setting: notification_setting5
   )
   pr_julianh = Profile.create!(
     first_name: "Julian",
@@ -101,7 +101,7 @@ User.delete_all
     github: "ijscoman1337",
     course: traineeship4,
     user: julianh,
-    notification_setting: notification_setting1
+    notification_setting: notification_setting6
   )
   pr_miriam = Profile.create!(
     first_name: "Miriam",
@@ -111,7 +111,7 @@ User.delete_all
     github: "miriamtocino",
     website: "http://miriamtocino.com/",
     user: miriam,
-    notification_setting: notification_setting1
+    notification_setting: notification_setting7
   )
   pr_admin = Profile.create!(
     first_name: "Wouter",
