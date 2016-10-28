@@ -274,6 +274,14 @@ ul.nav a:hover {
     border-top:none;
 }
 
+.table tr > td.web-hook {
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+}
+
 .search-bar {
     background-color: #fff;
     border: none;
