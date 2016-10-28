@@ -17,7 +17,8 @@ class Question < ApplicationRecord
   after_create :create_notification_setting
 
   def create_notification_setting
-    notification_settings.create
+    wants_emails = user.profile.notification_setting.send_emails
+    notification_settings.create(user: user, send_emails: wants_emails)
   end
 
   def self.search(search)

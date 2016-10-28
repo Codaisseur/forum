@@ -8,9 +8,9 @@ class Answer < ApplicationRecord
   after_create :create_notification_setting
 
   def create_notification_setting
-    wants_emails = user.profile.notification_setting.send_emails
-    notification_setting = question.notification_settings.where(user_id: user.id)
-    notification_setting.create(send_emails: wants_emails)
+    if question.notification_settings.where(user: user).length == 0
+      wants_emails = user.profile.notification_setting.send_emails
+      question.notification_settings.create(user: user, send_emails: wants_emails)
+    end
   end
-
 end

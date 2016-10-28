@@ -8,7 +8,6 @@
 <br>
 
 <div class="content-wrapper">
-  <input id="subscribe-checkbox" name="<%= @question.id %>" type="checkbox" <%= @subscribed ? 'checked' : ''%>>Subscribed
 
   <table class="table table-question">
     <tbody>
@@ -48,6 +47,9 @@
 
         <%end%>
 
+      </td>
+      <td>
+      Subscribe <input id="subscribe-checkbox" name="<%= @question.id %>" type="checkbox" <%= @subscribed ? 'checked'  : ''%>>
       </td>
     </tr>
     </tbody>
