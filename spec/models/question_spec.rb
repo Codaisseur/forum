@@ -25,6 +25,7 @@ RSpec.describe Question, type: :model do
   # describe "create notification setting" do
   #
   #
-  # end
   #
+  # end
+
 end
