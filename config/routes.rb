@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :profiles
     resources :courses
     resources :mentors
+    resources :slack_configs
 
     get "questions/:id" => "questions#show"
 

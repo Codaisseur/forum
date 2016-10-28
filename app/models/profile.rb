@@ -3,7 +3,7 @@ class Profile <  ActiveRecord::Base
   belongs_to :course
   has_one :notification_setting, as: :notifiable
   accepts_nested_attributes_for :notification_setting
-  after_create :create_notification_setting
+  after_save :create_notification_setting
 
   def full_name
     self.first_name + " " + self.last_name
@@ -16,6 +16,7 @@ class Profile <  ActiveRecord::Base
   end
 
   def create_notification_setting
-    build_notification_setting
+    return if notification_setting.present?
+    build_notification_setting.save
   end
 end
