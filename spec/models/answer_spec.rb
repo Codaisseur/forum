@@ -11,6 +11,8 @@ RSpec.describe Answer, type: :model do
   let!(:topic)            { create :topic }
   let!(:question)         { create :question, topic: topic, user: asker }
   let!(:answer)           { create :answer, question: question, user: answerer }
+  let!(:answer2)           { create :answer, question: question, user: asker }
+
 
   describe "after_create: create notification setting" do
 
@@ -18,10 +20,9 @@ RSpec.describe Answer, type: :model do
       expect(question.notification_settings.last.user_id).to eq(answerer.id)
     end
 
+    it "does not create a notification_setting for the same answerer twice" do
+      expect(question.notification_settings.last.user_id).not_to eq(asker.id)
+    end
+
   end
-
-
-
-
-
 end
