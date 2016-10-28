@@ -4,6 +4,7 @@ class SlackService
   include Rails.application.routes.url_helpers
 
   def initialize(request)
+    SlackConfig.new().save if SlackConfig.first.nil?
     @config = SlackConfig.first
     @slack_notifier = Slack::Notifier.new @config.web_hook, channel: @config.channel, username: @config.user_name
     @hostname = request.host_with_port # NOTE Does this behave when in production?

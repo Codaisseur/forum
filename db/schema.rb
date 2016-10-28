@@ -86,11 +86,11 @@ ActiveRecord::Schema.define(version: 20161028101617) do
   end
 
   create_table "slack_configs", force: :cascade do |t|
-    t.string   "web_hook"
-    t.string   "channel"
-    t.string   "user_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "web_hook",   default: "https://hooks.slack.com/services/"
+    t.string   "channel",    default: "channel"
+    t.string   "user_name",  default: "bot"
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
   end
 
   create_table "topics", force: :cascade do |t|
