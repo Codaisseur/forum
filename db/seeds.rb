@@ -26,13 +26,13 @@ if Rails.env.production?
   traineeship4 = Course.create!( name: "Traineeship 4", starting_at: Date.new(2016,8), ending_at: Date.new(2016,9) )
   traineeship5 = Course.create!( name: "Traineeship 5", starting_at: Date.new(2016,10), ending_at: Date.new(2016,11) )
 # else
-  # Answer.delete_all
-  # Question.delete_all
-  # Profile.delete_all
-  # User.delete_all
-  # Course.delete_all
-  # Topic.delete_all
-  # Mentor.delete_all
+Answer.delete_all
+Question.delete_all
+Profile.delete_all
+User.delete_all
+Course.delete_all
+Topic.delete_all
+Mentor.delete_all
 
   javascript          = Topic.create!( title: "Javascript" )
   java                = Topic.create!( title: "Java" )
