@@ -11,7 +11,7 @@ RSpec.describe Answer, type: :model do
   let!(:topic)            { create :topic }
   let!(:question)         { create :question, topic: topic, user: asker }
   let!(:answer)           { create :answer, question: question, user: answerer }
-  let!(:answer2)           { create :answer, question: question, user: asker }
+  let!(:answer2)          { create :answer, question: question, user: asker }
 
 
   describe "after_create: create notification setting" do
@@ -25,4 +25,5 @@ RSpec.describe Answer, type: :model do
     end
 
   end
+
 end

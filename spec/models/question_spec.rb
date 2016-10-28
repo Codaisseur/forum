@@ -22,10 +22,15 @@ RSpec.describe Question, type: :model do
   end
 
 
-  # describe "create notification setting" do
-  #
-  #
-  #
-  # end
+  describe "create notification setting" do
 
+    it "creates a notification_setting" do
+      expect(question.notification_settings.first.user_id).to eq(asker.id)
+    end
+
+
+    it "sets the send_emails to true" do
+      expect(question.notification_settings.first.send_emails).to be true
+    end
+  end
 end
