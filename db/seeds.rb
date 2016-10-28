@@ -1,38 +1,11 @@
-if Rails.env.production?
-  javascript          = Topic.create!( title: "Javascript" )
-  java                = Topic.create!( title: "Java" )
-  php                 = Topic.create!( title: "PHP" )
-  ruby                = Topic.create!( title: "Ruby" )
-  rails               = Topic.create!( title: "Rails" )
-  cases               = Topic.create!( title: "Cases" )
-  html                = Topic.create!( title: "HTML" )
-  ajax                = Topic.create!( title: "Ajax" )
-  jquery              = Topic.create!( title: "JQuery" )
-  sinatra             = Topic.create!( title: "Sinatra" )
-  generaldiscussion   = Topic.create!( title: "General Discussion" )
-  css                 = Topic.create!( title: "CSS" )
-  android             = Topic.create!( title: "Android" )
-  databases           = Topic.create!( title: "Databases" )
-  design              = Topic.create!( title: "Design" )
-  developmenttools    = Topic.create!( title: "Development Tools" )
-  ios                 = Topic.create!( title: "iOS" )
-  python              = Topic.create!( title: "Python" )
-  react               = Topic.create!( title: "React")
-  wordpress           = Topic.create!( title: "Wordpress")
-
-  traineeship1 = Course.create!( name: "Traineeship 1", starting_at: Date.new(2016,2), ending_at: Date.new(2016,3) )
-  traineeship2 = Course.create!( name: "Traineeship 2", starting_at: Date.new(2016,4), ending_at: Date.new(2016,5) )
-  traineeship3 = Course.create!( name: "Traineeship 3", starting_at: Date.new(2016,6), ending_at: Date.new(2016,7) )
-  traineeship4 = Course.create!( name: "Traineeship 4", starting_at: Date.new(2016,8), ending_at: Date.new(2016,9) )
-  traineeship5 = Course.create!( name: "Traineeship 5", starting_at: Date.new(2016,10), ending_at: Date.new(2016,11) )
-# else
 Answer.delete_all
+NotificationSetting.delete_all
 Question.delete_all
 Profile.delete_all
-User.delete_all
 Course.delete_all
 Topic.delete_all
 Mentor.delete_all
+User.delete_all
 
   javascript          = Topic.create!( title: "Javascript" )
   java                = Topic.create!( title: "Java" )
@@ -188,4 +161,3 @@ mentor3 = Mentor.create!(
   calendly_url: "https://calendly.com/matlap/30min",
   remote_avatar_url: "http://vignette4.wikia.nocookie.net/p__/images/0/03/DonnyKerabatsos.jpg/revision/latest?cb=20160119030354&path-prefix=protagonist"
 )
-end
