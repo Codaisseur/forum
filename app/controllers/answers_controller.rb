@@ -14,6 +14,8 @@ class AnswersController < ApplicationController
     @answer.user = current_user
 
     if @answer.save
+      QuestionMailer.asker_mail(@question).deliver_later
+      QuestionMailer.members_mail(@question).deliver_later
       if request.xhr?
         answer_out = render_to_string "/answers/_answer", layout: false
         ActionCable.server.broadcast 'answers', answer_out

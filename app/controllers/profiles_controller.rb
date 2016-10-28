@@ -3,7 +3,6 @@ class ProfilesController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    
     authorize! :read, @users
 
     if params[:search]
@@ -57,8 +56,9 @@ class ProfilesController < ApplicationController
 
   def edit
     @profile = Profile.find(params[:id])
+    @profile.notification_setting ||= @profile.notification_setting.build
     @user = @profile.user
-    authorize! :edit, @profile
+    authorize! :edit, @profile, @notification
   end
 
   def update
@@ -94,7 +94,7 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:avatar, :first_name, :last_name, :course_id, :bio, :github, :twitter, :website).tap do |person_params|
+    params.require(:profile).permit(:avatar, :first_name, :last_name, :course_id, :bio, :github, :twitter, :website, notification_setting_attributes: [:send_emails]).tap do |person_params|
       person_params.require([:first_name, :last_name])
     end
   end
