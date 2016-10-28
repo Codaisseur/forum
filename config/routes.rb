@@ -9,15 +9,24 @@ Rails.application.routes.draw do
     end
 
     resources :questions do
+      collection do
+        get 'subscribe'
+      end
       resources :answers do
         resources :votes, only: [:create, :destroy], controller: 'votes'
       end
       resources :votes, only: [:create, :destroy], controller: 'votes'
     end
 
-    resources :profiles
+    resources :profiles do
+      collection do
+        get 'reset_notifications'
+      end
+    end
+
     resources :courses
     resources :mentors
+    resources :slack_configs
 
     get "questions/:id" => "questions#show"
 

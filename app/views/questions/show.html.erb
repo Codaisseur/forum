@@ -8,6 +8,7 @@
 <br>
 
 <div class="content-wrapper">
+
   <table class="table table-question">
     <tbody>
       <tr>
@@ -25,8 +26,10 @@
 
         <p class="btn btn-topic topic-show-btn"><%= @question.topic.title %></p>
 
-
         <div id="question-<%= @question.id %>" class="question-body"><%= markdown(@question.body) %></div>
+        <td>
+          Subscribe <input id="subscribe-checkbox" name="<%= @question.id %>" type="checkbox" <%= @currently_subscribed ? 'checked'  : ''%>>
+        </td>
 
         <% if @question.user_id == current_user.id || current_user.is_admin?%>
 
@@ -36,14 +39,11 @@
         </div>
 
       </td>
-
       <td class="glyphicon-wrapper">
           <%= link_to raw("<i class='glyphicon glyphicon-trash'></i>"), @question, method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>
-
       <td>
           <i id="<%= @question.id %>" class="edit-btn-question glyphicon glyphicon-wrench"></i>
-
         <%end%>
 
       </td>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+     <style>
+       body {
+
+         font-family: 'Poppins', sans-serif;
+         font-weight: 20;
+       }
+     </style>
+ </head>
+
+ <body>
+   <!-- 1 column layout with 10px spacing -->
+   <table width="400" cellpadding="0" cellspacing="0" align="center">
+     <tr>
+       <td width="400">
+         <h4>Hi <%= @receiver_name %>,</h4>
+
+         <p>A question you have answered on the Codaisseur Forum has got a new reply from <%= @answerer_name %>. Please visit the forum to check it out.</p>
+
+         <p>Question: <%= link_to(@question.title, question_url(@question), style: "color: #d61515 ;") %></p>
+
+         <p>Cheers,</p>
+         </br>
+         <h4>The Codaisseur Team</h4>
+         <%= image_tag 'codaisseur-icon.png', style: "width:40px;"  %>
+       </td>
+     </tr>
+   </table>
+ </body>
+</html>

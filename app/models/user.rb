@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   has_one :profile
   has_many :votes
+  has_many :questions
 
   def active_for_authentication?
     super && approved?

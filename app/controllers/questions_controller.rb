@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   helper_method :sort_column, :sort_direction
+  helper QuestionsHelper
 
   def index
     if user_signed_in?
@@ -8,7 +9,7 @@ class QuestionsController < ApplicationController
       end
     end
 
-    @random = Question.includes(:answers).where( :answers => { :question_id => nil } ).sample(3)
+    @random = Question.includes(:answers).where( answers: { question_id: nil } ).sample(3)
 
     if params[:search]
       @questions = Question.search(params[:search]).order(created_at: :desc)
@@ -22,6 +23,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @currently_subscribed = @question.notification_settings.where(user: current_user).first.send_emails
   end
 
   def new
@@ -33,12 +35,12 @@ class QuestionsController < ApplicationController
     @question.user = current_user
     authorize! :create, @question
     if @question.save()
+      SlackService.new(request).slack_notification_new(@question)
       redirect_to @question
     else
       render :new
     end
   end
-
 
   def update
     @question = Question.find(params[:question_id])
@@ -51,7 +53,6 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-
     @question = Question.find(params[:id])
 
     @question.destroy
@@ -65,6 +66,15 @@ class QuestionsController < ApplicationController
 
     @question = Question.where( user: @user ).order( created_at: :desc )
     authorize! :read, @user
+  end
+
+  def subscribe
+    @question = Question.find(params[:question_id])
+    if @question.notification_settings.where(user_id: current_user.id).length == 1
+      @question.notification_settings.where(user_id: current_user.id).first.update(send_emails: params[:subscribe])
+    else
+      @question.notification_settings.create(user: current_user, send_emails: params[:subscribe])
+    end
   end
 
   private

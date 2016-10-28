@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928122722) do
+ActiveRecord::Schema.define(version: 20161028101617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,17 @@ ActiveRecord::Schema.define(version: 20160928122722) do
     t.string   "competencies"
   end
 
+  create_table "notification_settings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "notifiable_type"
+    t.integer  "notifiable_id"
+    t.boolean  "send_emails",     default: true
+    t.index ["notifiable_type", "notifiable_id"], name: "idx_notification_settings_on_notifiable_type_and_id", using: :btree
+    t.index ["user_id"], name: "index_notification_settings_on_user_id", using: :btree
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -72,6 +83,14 @@ ActiveRecord::Schema.define(version: 20160928122722) do
     t.integer  "topic_id"
     t.index ["topic_id"], name: "index_questions_on_topic_id", using: :btree
     t.index ["user_id"], name: "index_questions_on_user_id", using: :btree
+  end
+
+  create_table "slack_configs", force: :cascade do |t|
+    t.string   "web_hook",   default: "https://hooks.slack.com/services/"
+    t.string   "channel",    default: "channel"
+    t.string   "user_name",  default: "bot"
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
   end
 
   create_table "topics", force: :cascade do |t|
@@ -115,6 +134,7 @@ ActiveRecord::Schema.define(version: 20160928122722) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
+  add_foreign_key "notification_settings", "users"
   add_foreign_key "profiles", "courses"
   add_foreign_key "profiles", "users"
   add_foreign_key "questions", "topics"

@@ -51,7 +51,13 @@
               <td><%= f.text_field :website, class: "form-control" %></td>
             </tr>
             <tr>
-              <td colspan="2" class="actions btn-submit-wrapper">
+              <%= f.fields_for(:notification_setting) do |n| %>
+                  <td><%= n.label 'Receive email notifications' %></td>
+                  <td><%= n.check_box :send_emails %></td>
+              <% end %>
+            </tr>
+            <tr>
+            <td colspan="2" class="actions btn-submit-wrapper">
                <%= link_to "Cancel", @profile, class: "btn btn-default" %>
                 <%= f.submit (@profile.new_record? ? "Create" : "Update"), class: "btn btn-codaisseur" %>
               </td>
@@ -59,6 +65,7 @@
           </tbody>
         </table>
  <% end %>
+
         </div>
     </div>
 </div>

@@ -1,0 +1,35 @@
+<h2>Slack management</h2>
+
+<div class="user-controls controls-wrapper">
+  <div class="row">
+    <div class="input-group">
+        <% if @slack_config.nil? %>
+          <%= link_to 'New slack config', new_slack_config_path, class: 'btn btn-codaisseur', style: 'margin-bottom: 20px;' %>
+        <% else %>
+          <%= link_to 'Edit slack config', edit_slack_config_path(@slack_config), class: 'btn btn-codaisseur', style: 'margin-bottom: 20px;' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="table-wrapper">
+  <table class="table table-hover table-slack_config">
+    <% if !@slack_config.nil? %>
+      <thead>
+        <tr>
+          <th>Channel</th>
+          <th>User name</th>
+          <th>Web Hook</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @slack_config.channel %></td>
+          <td><%= @slack_config.user_name %></td>
+          <td class="web-hook"><%= @slack_config.web_hook %></td>
+        </tr>
+      </tbody>
+    <% else %>
+      <td>Please configure Slack</td>
+    <% end %>
+  </table>
+</div>
