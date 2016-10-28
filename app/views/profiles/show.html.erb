@@ -37,17 +37,22 @@
           <td><%= link_to @profile.website, @profile.website, class: 'codaisseur-link', target: '_blank' if !@profile.website.nil? %></td>
         </tr>
         <tr>
-          <td>Receive email notifications</td>
+          <td>Automatically subscribe to questions I answer</td>
           <td><%= @profile.notification_setting.send_emails ? "Yes" : "No" %></td>
         </tr>
         <tr>
-          <td>My questions:</td>
+          <td>Unsubscribe from all:</td>
+          <td><%= link_to "Stop bugging me!", reset_notifications_profiles_path, class: 'codaisseur-link', data: {confirm: "This will unsubscribe you from all your current notifications. Are you Sure?"} %></td>
+        </tr>
+
+        <tr>
+          <td>My Questions:</td>
           <td></td>
         </tr>
         <% current_user.questions.each do |question|%>
         <tr>
           <td></td>
-          <td>
+          <td> <%= image_tag 'codaisseur-icon.png', style: "width:25px;" %>
             <%= link_to question.title, question_path(question), class: 'codaisseur-link', target: '_blank'%>
           </td>
         </tr>
