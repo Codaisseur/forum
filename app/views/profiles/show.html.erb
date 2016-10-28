@@ -40,7 +40,13 @@
         <td><%= @profile.notification_setting.send_emails ? "Yes" : "No" %></td>
         <tr>
         <td>My questions:</td>
-        <td><%= @user.questions %></td>
+        </tr>
+        <tr>
+            <% current_user.questions.each do |question|%>
+            <tr><td>  <%= question.title %> </td></tr>
+            <% end %>
+
+        </tr>
         <tr>
 
           <td colspan="2">
