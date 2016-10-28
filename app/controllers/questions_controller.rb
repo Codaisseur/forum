@@ -23,6 +23,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    #@subscribed = @question.notification_settings.where(user: current_user).send_emails ||= current_user.profile.notification_setting.send_emails
   end
 
   def new
@@ -40,7 +41,6 @@ class QuestionsController < ApplicationController
       render :new
     end
   end
-
 
   def update
     @question = Question.find(params[:question_id])
@@ -66,6 +66,15 @@ class QuestionsController < ApplicationController
 
     @question = Question.where( user: @user ).order( created_at: :desc )
     authorize! :read, @user
+  end
+
+  def subscribe
+    @question = Question.find(params[:question_id])
+    if @question.notification_settings.where(user_id: current_user.id).length == 1
+      @question.notification_settings.where(user_id: current_user.id).first.update(send_emails: params[:subscribe])
+    else
+      @question.notification_settings.create(user: current_user, send_emails: params[:subscribe])
+    end
   end
 
   private
