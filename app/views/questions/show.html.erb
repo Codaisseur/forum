@@ -37,19 +37,16 @@
         </div>
 
       </td>
-
       <td class="glyphicon-wrapper">
           <%= link_to raw("<i class='glyphicon glyphicon-trash'></i>"), @question, method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>
-
       <td>
           <i id="<%= @question.id %>" class="edit-btn-question glyphicon glyphicon-wrench"></i>
-
         <%end%>
 
       </td>
       <td>
-      Subscribe <input id="subscribe-checkbox" name="<%= @question.id %>" type="checkbox" <%= @subscribed ? 'checked'  : ''%>>
+        Subscribe <input id="subscribe-checkbox" name="<%= @question.id %>" type="checkbox" <%= @currently_subscribed ? 'checked'  : ''%>>
       </td>
     </tr>
     </tbody>

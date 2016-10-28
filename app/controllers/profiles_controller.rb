@@ -79,6 +79,13 @@ class ProfilesController < ApplicationController
       redirect_to profiles_path
   end
 
+  def reset_notifications
+    NotificationSetting.where(user: current_user).each do |ns|
+      ns.update(send_emails: false)
+    end
+    redirect_to profile_path(current_user.profile), notice: "You are unsubscribed from all threads"
+  end
+
   private
 
   def sortable_columns
