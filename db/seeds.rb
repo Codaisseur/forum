@@ -25,7 +25,7 @@ if Rails.env.production?
   traineeship3 = Course.create!( name: "Traineeship 3", starting_at: Date.new(2016,6), ending_at: Date.new(2016,7) )
   traineeship4 = Course.create!( name: "Traineeship 4", starting_at: Date.new(2016,8), ending_at: Date.new(2016,9) )
   traineeship5 = Course.create!( name: "Traineeship 5", starting_at: Date.new(2016,10), ending_at: Date.new(2016,11) )
-else
+# else
   Answer.delete_all
   Question.delete_all
   Profile.delete_all
