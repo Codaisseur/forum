@@ -1,0 +1,26 @@
+<%= form_for @slack_config do |f| %>
+
+<table class="table table-wrapper">
+  <tbody>
+    <tr>
+      <td><%= f.label :web_hook %></td>
+      <td><%= f.text_field :web_hook, required: true %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :channel %></td>
+      <td><%= f.text_field :channel, required: true %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :user_name %></td>
+      <td><%= f.text_field :user_name, required: true %></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="actions btn-submit-wrapper">
+        <%= f.submit (@slack_config.new_record? ? "Create" : "Update"), class: "btn btn-codaisseur" %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<% end %>
+
