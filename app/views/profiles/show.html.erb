@@ -43,7 +43,8 @@
         </tr>
         <tr>
             <% current_user.questions.each do |question|%>
-            <tr><td>  <%= question.title %> </td></tr>
+            <tr><td><%= link_to question.title, question_path(question), class: 'codaisseur-link', target: '_blank'%></td></tr>
+
             <% end %>
 
         </tr>
